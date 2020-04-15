@@ -7,10 +7,13 @@ REL = $(shell git rev-parse --short=4 HEAD)
 PIP = $(CWD)/bin/pip3
 PY  = $(CWD)/bin/python3
 
+
+
 .PHONY: all py rust
 all:
-py: $(MODULE).py $(MODULE).ini
-	$(PY) $^
+py: $(MODULE).log
+$(MODULE).log: $(MODULE).py $(MODULE).ini
+	$(PY) $^ > $@ && tail $@
 rust: target/debug/guest_os $(MODULE).ini
 	$^
 
@@ -48,8 +51,8 @@ debian:
 .PHONY: master shadow release
 
 MERGE  = Makefile README.md .gitignore .vscode doc
-MERGE += requirements.txt $(MODULE).*
-MERGE += src *rs Cargo.toml
+MERGE += requirements.txt $(MODULE).py $(MODULE).ini
+MERGE += src Cargo.toml
 
 master:
 	git checkout $@
