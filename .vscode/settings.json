@@ -1,4 +1,8 @@
 {
+    "python.pythonPath": "./bin/python3",
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Path": "./bin/autopep8",
+    "python.formatting.autopep8Args": ["--ignore=E26,E302,E401,E402"],
 
     "multiCommand.commands": [
         {
@@ -7,7 +11,7 @@
             "sequence": [
                 "workbench.action.files.saveAll",
                 // "workbench.action.terminal.focus",
-                {"command": "workbench.action.terminal.sendSequence","args": {"text": "\u000Dclear ; make all \u000D"}}
+                {"command": "workbench.action.terminal.sendSequence","args": {"text": "\u000Dclear ; make py \u000D"}}
             ],
         },
         {
@@ -16,7 +20,7 @@
             "sequence": [
                 "workbench.action.files.saveAll",
                 // "workbench.action.terminal.focus",
-                {"command": "workbench.action.terminal.sendSequence","args": {"text": "\u000Dclear ; make doxy \u000D"}}
+                {"command": "workbench.action.terminal.sendSequence","args": {"text": "\u000Dclear ; make rust \u000D"}}
             ],
         },
     ],
@@ -24,12 +28,12 @@
     // ignore large files for VSCode sync
     "files.watcherExclude": {
         "**/bin/**": true, "**/include/**":true, "**/lib*/**":true, "**/share/**":true,
-        "**/*.pyc": true, "**/docs/**":true,
+        "**/target/**":true,
     },
 
     "files.exclude": {
         "bin": true, "include":true, "lib*":true, "share":true, "pyvenv.cfg":true,
-        "**/*.pyc": true, "**/docs/**":true,
+        "**/target/**":true,
     },
 
     "editor.tabSize": 4,
