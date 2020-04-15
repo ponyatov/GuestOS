@@ -1,0 +1,19 @@
+[package]
+name = "guest_os"
+version = "0.0.1"
+authors = ["Dmitry Ponyatov <dponyatov@gmail.com>"]
+edition = "2018"
+description = "Guest OS in Rust"
+readme = "README.md"
+license = "MIT"
+publish = false
+
+[dependencies]
+
+[profile.dev]
+opt-level = 0
+lto = false
+debug = true
+debug-assertions = true
+codegen-units = 1
+panic = 'unwind'
